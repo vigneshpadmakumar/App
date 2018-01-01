@@ -8,7 +8,7 @@ var http=require('http');
 
 var toonavatar = require('cartoon-avatar');
 
-var $ = require('jquery');
+//var $ = require('jquery');
 
 
 
