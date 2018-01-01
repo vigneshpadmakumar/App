@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+body,html  {
+    background-image: url("http://www.powerpointhintergrund.com/uploads/2017/06/07-plain-backgrounds-dark-blue-checks-web-background-hd-245-jpg--34.jpeg");
+    background-color: #cccccc;
+     height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    margin: 0;
+}
+#images img {
+width: 90px;
+margin-top: -300px;
+
+
+
+}
+</style>
+  <title>Administrator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	
+<script type="text/javascript">
+  
+$(document).ready(function()
+
+{
+      
+          $.getJSON('http://localhost:8080/alluserrequests', function(data) 
+
+                              {
+         
+                                    var html = '<table class="table table-striped"><thead><tr><th>Name</th><th>Operation</th></tr></thead><tbody>';
+                                   
+                                    console.log(Object.keys(data).length);
+                                    //console.log(data[0]);
+
+                                        //for (var i = 1;i<=Object.keys(data).length;i++) 
+                                        for (var i =0;i<Object.keys(data).length;i++) 
+
+                                        {
+
+
+                                                  html += '<tr>';
+    
+                                                  html += '<td>' + data[i].user + '</td>';
+
+                                                  html += '<input type="hidden" name="data_id" id="dataid" value="'+data[i].id+'">';
+
+                                                  html += '<td><input type="button" value="ACCEPT" id="accept" onclick="return acceptRequest('+data[i].id+');">&nbsp; &nbsp;  &nbsp;  &nbsp;<input type="button" id="reject" value="REJECT" onclick="return rejectRequest('+data[i].id+');"></td>';
+    
+    
+                                                  html += "</tr>";
+                                        }
+
+                                  html += '</tbody></table>';
+
+
+                                  $(html).appendTo('#div1');
+
+                              });
+
+
+});
+
+
+function acceptRequest(id)
+{
+    
+
+        // var gets=document.getElementById('dataid').value;
+        // gets=i;
+
+    $.ajax({
+                        url: "/acceptrequest",
+                        type: "POST",
+                        data: { acceptid: id },
+                        success: function(response){
+                              //do action 
+                             // alert('accepted'); 
+                             location.reload();
+                        },
+                        error: function(){
+                              // do action
+                              alert('error accept request');
+                        }
+                    });
+
+   
+}
+function rejectRequest(id)
+{
+    
+
+        // var gets=document.getElementById('dataid').value;
+        // gets=i;
+
+    $.ajax({
+                        url: "/rejectrequest",
+                        type: "POST",
+                        data: { rejectid: id },
+                        success: function(response){
+                              //do action 
+                              //alert('rejected!');
+                              location.reload();
+                        },
+                        error: function(){
+                              // do action
+                              alert('error reject request');
+                        }
+                    });
+
+   
+}
+
+
+</script>
+  
+
+ 
+</head>
+<body>
+<h2>ADMIN</h2><br><br>
+<h6>
+<div id="div1">
+</div>
+</h6>
+
+
+</body>
+</html>

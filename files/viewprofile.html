@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+body,html  {
+    background-image: url("http://www.powerpointhintergrund.com/uploads/2017/06/07-plain-backgrounds-dark-blue-checks-web-background-hd-245-jpg--34.jpeg");
+    background-color: #cccccc;
+     height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    margin: 0;
+}
+#images img {
+width: 90px;
+margin-top: -300px;
+
+
+
+}
+</style>
+  <title>Profile details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	
+<script type="text/javascript">
+  	
+  	$(document).ready(function(){
+  		// $("button").click(function(){
+  		//alert('hi');
+  		 $.getJSON('http://localhost:8080/datas', function(data){
+  		 		//alert('hi');
+
+  		 	//var datas=JSON.parse(data);
+  		 	//alert(data.name);
+  		 	//alert(data.email);
+  		 	 $('#detailInfoname').html(data.name);
+  		 	  $('#detailInfoemail').html(data.email);
+  		 	  $('#detailInfoaddress').html(data.address);
+  		 	  $('#detailInfomobileno').html(data.mobileno);
+
+
+
+
+});
+
+$.getJSON('http://localhost:8080/homedatas', function(data){
+
+var img = $("<img />").attr('src',data.urlimage)
+    .on('load', function() {
+        if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+            alert('broken image!');
+        } else {
+          //alert('works');
+            $("#images").append(img);
+        }
+    });
+
+});
+
+
+
+
+
+ //  		 .done(function() {
+ //    alert( "second success" );
+ //  })
+ //  .fail(function() {
+ //    alert( "error" );
+ //  })
+ //  .always(function() {
+ //    alert( "complete" );
+ //  });
+ // // });
+  		});
+  
+
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Profile</h2>
+  <p></p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Mobile No</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="detailInfoname"></td>
+        <td id="detailInfoemail"></td>
+        <td id="detailInfoaddress"></td>
+        <td id="detailInfomobileno"></td>
+      </tr>
+  
+    </tbody>
+  </table>
+  <a href= '/logout'>Logout</a>
+</div>
+<div id="images"></div>
+</body>
+</html>

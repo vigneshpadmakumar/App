@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Registartion Form</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form class="form-horizontal" action='/' method="POST">
+  <fieldset>
+    <div id="legend">
+      <legend class="">Register</legend>
+    </div>
+    <div class="control-group">
+      <!-- Username -->
+      <label class="control-label"  for="username">Username</label>
+      <div class="controls">
+        <input type="text" id="regusername" name="regusername" placeholder="" class="input-xlarge" required>
+        <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="regemail">E-mail</label>
+      <div class="controls">
+        <input type="text" id="regemail" name="regemail" placeholder="" class="input-xlarge" required>
+        <p class="help-block">Please provide your E-mail</p>
+      </div>
+    </div>
+
+     <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="regaddress">Address</label>
+      <div class="controls">
+        <!--<input type="text" id="regaddress" name="regaddress" placeholder="" class="input-xlarge" required>-->
+        <textarea id="regaddress" name="regaddress" placeholder="" class="input-xlarge" required></textarea>
+        <p class="help-block">Please provide your address</p>
+      </div>
+    </div>
+
+     <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="regemail">Mobile No</label>
+      <div class="controls">
+        <input type="text" id="regmobileno" name="regmobileno" placeholder="" class="input-xlarge" required>
+        <p class="help-block">Please provide your mobile number</p>
+      </div>
+    </div>
+
+
+
+
+
+ 
+    <div class="control-group">
+      <!-- Password-->
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+        <input type="password" id="regpassword" name="regpassword" placeholder="" class="input-xlarge" required>
+        <p class="help-block">Password should be at least 4 characters</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Password -->
+      <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+      <div class="controls">
+        <input type="password" id="passwordconfirm" name="passwordconfirm" placeholder="" class="input-xlarge" required>
+        <p class="help-block">Please confirm password</p>
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success" type="submit">Register</button>
+                <a class="btn btn-link" href="/login">Go back to Login page</a>
+
+      </div>
+    </div>
+  </fieldset>
+</form>
+</body>
